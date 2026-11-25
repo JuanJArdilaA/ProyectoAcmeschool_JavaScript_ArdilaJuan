@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acme School - Plataforma de Examenes</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <acme-navbar activo="inicio"></acme-navbar>
+
+  <main class="principal">
+    <div class="contenedor">
+      <!-- vista de catalogo de examenes -->
+      <section id="seccionCatalogo">
+        <div class="portada">
+          <h1>Plataforma de Evaluaciones Acme School</h1>
+          <p>Selecciona un examen disponible, controla tu tiempo en pantalla y revisa tu resultado al instante.</p>
+        </div>
+
+        <div class="filtros">
+          <input type="text" id="inputBuscar" class="entrada" placeholder="Buscar examen por titulo o materia">
+          <select id="filtroMateria" class="entrada">
+            <option value="">Todas las materias</option>
+          </select>
+        </div>
+
+        <div id="listaExamenes" class="grilla-examenes"></div>
+
+        <!-- historial de resultados recientes -->
+        <section class="tarjeta">
+          <div class="cabecera-seccion">
+            <h2 class="tarjeta-titulo">Resultados recientes</h2>
+          </div>
+
+          <div class="tabla-contenedor">
+            <table class="tabla">
+              <thead>
+                <tr>
+                  <th>Estudiante</th>
+                  <th>Examen</th>
+                  <th>Puntaje</th>
+                  <th>Porcentaje</th>
+                  <th>Estado</th>
+                  <th>Fecha</th>
+                </tr>
+              </thead>
+              <tbody id="tablaResultados"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <!-- vista de resolucion del examen -->
+      <section id="seccionExamen" class="oculto">
+        <div class="tarjeta cabecera-examen">
+          <div>
+            <h1 id="tituloExamenActivo" class="titulo-pagina"></h1>
+            <p id="infoExamenActivo" class="subtitulo-pagina"></p>
+            <p id="progresoPreguntas"></p>
+          </div>
+          <acme-reloj id="relojExamen"></acme-reloj>
+        </div>
+
+        <form id="formResolver">
+          <div class="tarjeta campo">
+            <label for="inputEstudiante">Nombre del estudiante</label>
+            <input type="text" id="inputEstudiante" placeholder="Escribe tu nombre completo">
+          </div>
+
+          <div id="contenedorPreguntas" class="lista-preguntas"></div>
+
+          <div class="acciones">
+            <button type="submit" class="btn btn-primario">Finalizar examen</button>
+            <button type="button" id="btnCancelarExamen" class="btn btn-secundario">Cancelar</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- vista de resultados del examen -->
+      <section id="seccionResultado" class="oculto">
+        <div class="tarjeta">
+          <h1 class="titulo-pagina">Resultado del examen</h1>
+          <p id="resumenEstudiante" class="subtitulo-pagina"></p>
+          <div id="avisoResultado" class="alerta alerta-info oculto"></div>
+
+          <div class="resumen-nota">
+            <div class="dato-nota">
+              <span>Aciertos</span>
+              <strong id="resumenPuntaje">0 / 0</strong>
+            </div>
+            <div class="dato-nota">
+              <span>Porcentaje</span>
+              <strong id="resumenPorcentaje">0%</strong>
+            </div>
+            <div class="dato-nota">
+              <span>Estado</span>
+              <strong id="resumenEstado">-</strong>
+            </div>
+          </div>
+
+          <div class="acciones">
+            <button type="button" id="btnVolverCatalogo" class="btn btn-primario">Volver al catalogo</button>
+            <button type="button" id="btnRepetirExamen" class="btn btn-secundario">Repetir examen</button>
+          </div>
+        </div>
+
+        <div id="detalleRespuestas" class="lista-preguntas panel-espacio"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <p>Acme School - Plataforma de Evaluaciones</p>
+  </footer>
+
+  <script type="module" src="js/resolver.js"></script>
+</body>
+</html>
