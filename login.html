@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingresar - Acme School</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <acme-navbar activo="login"></acme-navbar>
+
+  <main class="principal">
+    <div class="contenedor">
+      <!-- formulario de inicio de sesion -->
+      <section class="tarjeta login-caja">
+        <h1 class="titulo-pagina">Iniciar sesion</h1>
+        <p class="subtitulo-pagina">Accede a la gestion de usuarios y examenes de Acme School.</p>
+
+        <div id="mensajeError" class="alerta alerta-error oculto"></div>
+
+        <form id="formLogin">
+          <div class="campo">
+            <label for="inputCorreo">Correo electronico</label>
+            <input type="email" id="inputCorreo" placeholder="correo@acmeschool.edu" required>
+          </div>
+
+          <div class="campo">
+            <label for="inputClave">Contrasena</label>
+            <input type="password" id="inputClave" placeholder="Ingresa tu contrasena" required>
+          </div>
+
+          <div class="acciones">
+            <button type="submit" class="btn btn-primario">Ingresar</button>
+            <a href="index.html" class="btn btn-secundario">Volver al catalogo</a>
+          </div>
+        </form>
+
+        <div class="login-ayuda">
+          <p><strong>Usuario inicial de prueba:</strong></p>
+          <p>Correo: admin@acmeschool.edu</p>
+          <p>Contrasena: admin123</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <p>Acme School - Plataforma de Evaluaciones</p>
+  </footer>
+
+  <script type="module" src="js/login.js"></script>
+</body>
+</html>
