@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usuarios - Acme School</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <acme-navbar activo="usuarios"></acme-navbar>
+
+  <main class="principal">
+    <div class="contenedor">
+      <h1 class="titulo-pagina">Gestion de usuarios</h1>
+      <p class="subtitulo-pagina">Crea, edita o elimina cuentas de administradores, docentes y estudiantes.</p>
+
+      <div class="panel-doble">
+        <!-- formulario de usuario -->
+        <section class="tarjeta">
+          <h2 id="tituloForm" class="tarjeta-titulo">Nuevo usuario</h2>
+          <div id="mensajeUsuario" class="alerta oculto"></div>
+
+          <form id="formUsuario">
+            <div class="campo">
+              <label for="inputNombre">Nombre completo</label>
+              <input type="text" id="inputNombre" placeholder="Ej. Ana Torres" required>
+            </div>
+
+            <div class="campo">
+              <label for="inputCorreo">Correo electronico</label>
+              <input type="email" id="inputCorreo" placeholder="ana@acmeschool.edu" required>
+            </div>
+
+            <div class="campo">
+              <label for="inputClave">Contrasena</label>
+              <input type="password" id="inputClave" placeholder="Minimo 4 caracteres" required>
+            </div>
+
+            <div class="campo">
+              <label for="selectRol">Rol</label>
+              <select id="selectRol">
+                <option value="estudiante">Estudiante</option>
+                <option value="docente">Docente</option>
+                <option value="administrador">Administrador</option>
+              </select>
+            </div>
+
+            <div class="campo">
+              <label for="selectEstado">Estado</label>
+              <select id="selectEstado">
+                <option value="activo">Activo</option>
+                <option value="inactivo">Inactivo</option>
+              </select>
+            </div>
+
+            <div class="acciones">
+              <button type="submit" id="btnGuardar" class="btn btn-primario">Guardar usuario</button>
+              <button type="button" id="btnCancelar" class="btn btn-secundario oculto">Cancelar</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- tabla de usuarios -->
+        <section class="tarjeta">
+          <div class="cabecera-seccion">
+            <h2 class="tarjeta-titulo">Lista de usuarios</h2>
+            <input type="text" id="inputBuscar" class="entrada" placeholder="Buscar por nombre, correo o rol">
+          </div>
+
+          <div class="tabla-contenedor">
+            <table class="tabla">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Correo</th>
+                  <th>Rol</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tablaUsuarios"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <p>Acme School - Modulo de Usuarios</p>
+  </footer>
+
+  <script type="module" src="js/usuarios.js"></script>
+</body>
+</html>
