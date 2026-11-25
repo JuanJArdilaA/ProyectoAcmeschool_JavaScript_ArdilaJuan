@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion de Examenes - Acme School</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <acme-navbar activo="examenes"></acme-navbar>
+
+  <main class="principal">
+    <div class="contenedor">
+      <h1 class="titulo-pagina">Gestion de examenes</h1>
+      <p class="subtitulo-pagina">Administra evaluaciones, tiempos limite y el banco de preguntas y respuestas.</p>
+
+      <div class="panel-doble">
+        <!-- formulario de examen -->
+        <section class="tarjeta">
+          <h2 id="tituloFormExamen" class="tarjeta-titulo">Nuevo examen</h2>
+          <div id="mensajeExamen" class="alerta oculto"></div>
+
+          <form id="formExamen">
+            <div class="campo">
+              <label for="inputTitulo">Titulo del examen</label>
+              <input type="text" id="inputTitulo" placeholder="Ej. Logica de Programacion" required>
+            </div>
+
+            <div class="campo">
+              <label for="inputMateria">Materia</label>
+              <input type="text" id="inputMateria" placeholder="Ej. Programacion" required>
+            </div>
+
+            <div class="campo">
+              <label for="inputTiempo">Tiempo limite (minutos)</label>
+              <input type="number" id="inputTiempo" min="1" max="120" value="5" required>
+            </div>
+
+            <div class="campo">
+              <label for="inputDescripcion">Descripcion</label>
+              <textarea id="inputDescripcion" placeholder="Resumen corto del contenido del examen" required></textarea>
+            </div>
+
+            <div class="campo">
+              <label for="selectEstadoExamen">Estado en catalogo</label>
+              <select id="selectEstadoExamen">
+                <option value="activo">Publicado</option>
+                <option value="inactivo">Oculto</option>
+              </select>
+            </div>
+
+            <div class="acciones">
+              <button type="submit" id="btnGuardarExamen" class="btn btn-primario">Guardar examen</button>
+              <button type="button" id="btnCancelarExamen" class="btn btn-secundario oculto">Cancelar</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- tabla de examenes -->
+        <section class="tarjeta">
+          <div class="cabecera-seccion">
+            <h2 class="tarjeta-titulo">Examenes creados</h2>
+            <input type="text" id="inputBuscarExamen" class="entrada" placeholder="Buscar por titulo o materia">
+          </div>
+
+          <div class="tabla-contenedor">
+            <table class="tabla">
+              <thead>
+                <tr>
+                  <th>Titulo</th>
+                  <th>Materia</th>
+                  <th>Tiempo</th>
+                  <th>Preguntas</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tablaExamenes"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <!-- seccion de preguntas del examen seleccionado -->
+      <section id="seccionPreguntas" class="tarjeta panel-espacio oculto">
+        <div class="cabecera-seccion">
+          <h2 id="tituloPreguntas" class="tarjeta-titulo">Preguntas del examen</h2>
+          <button type="button" id="btnCerrarPreguntas" class="btn btn-secundario btn-pequeno">Cerrar preguntas</button>
+        </div>
+
+        <div class="panel-doble">
+          <div>
+            <h3 id="tituloFormPregunta" class="tarjeta-titulo">Nueva pregunta</h3>
+            <div id="mensajePregunta" class="alerta oculto"></div>
+
+            <form id="formPregunta">
+              <div class="campo">
+                <label for="inputEnunciado">Enunciado</label>
+                <textarea id="inputEnunciado" placeholder="Escribe aqui la pregunta" required></textarea>
+              </div>
+
+              <div class="campo">
+                <label for="opcion0">Opcion A</label>
+                <input type="text" id="opcion0" placeholder="Primera opcion" required>
+              </div>
+
+              <div class="campo">
+                <label for="opcion1">Opcion B</label>
+                <input type="text" id="opcion1" placeholder="Segunda opcion" required>
+              </div>
+
+              <div class="campo">
+                <label for="opcion2">Opcion C</label>
+                <input type="text" id="opcion2" placeholder="Tercera opcion" required>
+              </div>
+
+              <div class="campo">
+                <label for="opcion3">Opcion D</label>
+                <input type="text" id="opcion3" placeholder="Cuarta opcion" required>
+              </div>
+
+              <div class="campo">
+                <label for="selectCorrecta">Respuesta correcta</label>
+                <select id="selectCorrecta">
+                  <option value="0">Opcion A</option>
+                  <option value="1">Opcion B</option>
+                  <option value="2">Opcion C</option>
+                  <option value="3">Opcion D</option>
+                </select>
+              </div>
+
+              <div class="acciones">
+                <button type="submit" id="btnGuardarPregunta" class="btn btn-primario">Agregar pregunta</button>
+                <button type="button" id="btnCancelarPregunta" class="btn btn-secundario oculto">Cancelar</button>
+              </div>
+            </form>
+          </div>
+
+          <div>
+            <h3 class="tarjeta-titulo">Lista de preguntas</h3>
+            <div id="listaPreguntas"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <p>Acme School - Modulo de Examenes</p>
+  </footer>
+
+  <script type="module" src="js/examenes.js"></script>
+</body>
+</html>
